@@ -1,6 +1,6 @@
 cask "syrtis" do
-  version "2.0.1"
-  sha256 "6b6aea937efd83bc90527b09305f4127c9dc85ddad203ffea0addf529aaa47b2"
+  version "2.1.0"
+  sha256 "0c187539b313cf0564c7ae9ba024f759d672d3c0b3b4862d27a80d5b32e2b676"
 
   url "https://github.com/Nanako0129/syrtis/releases/download/v#{version}/Syrtis.app.tar.gz"
   name "Syrtis"
