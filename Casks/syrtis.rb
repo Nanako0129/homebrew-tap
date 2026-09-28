@@ -1,6 +1,6 @@
 cask "syrtis" do
-  version "2.1.0"
-  sha256 "0c187539b313cf0564c7ae9ba024f759d672d3c0b3b4862d27a80d5b32e2b676"
+  version "2.2.0"
+  sha256 "1a0cbf8cb5d05454d79166d3c89e8ae2e96f865c3110a25a9f554d88cb139707"
 
   url "https://github.com/Nanako0129/syrtis/releases/download/v#{version}/Syrtis.app.tar.gz"
   name "Syrtis"
@@ -12,10 +12,6 @@ cask "syrtis" do
   depends_on arch: :arm64
 
   app "Syrtis.app"
-
-  postflight_steps do
-    run "/usr/bin/xattr", args: ["-dr", "com.apple.quarantine", "{{appdir}}/Syrtis.app"]
-  end
 
   zap trash: [
     "~/Library/Application Support/com.nyanako.tokenbar",
