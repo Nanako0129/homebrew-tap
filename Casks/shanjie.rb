@@ -1,6 +1,6 @@
 cask "shanjie" do
-  version "0.1.0"
-  sha256 "f16cb917f2529ef438123fa3421b2585287709b4096ec9f8b4407d6290e17165"
+  version "0.1.1"
+  sha256 "af51d1ba471a899f61c9fa1354c48575fc11f33a5b64f55b91e1a736e0feeb8d"
 
   url "https://github.com/Nanako0129/shanjie/releases/download/v#{version}/shanjie-#{version}.zip"
   name "善解輸入法"
@@ -22,7 +22,8 @@ cask "shanjie" do
   caveats <<~EOS
     After the first install, register and enable the input method:
       "$HOME/Library/Input Methods/善解輸入法.app/Contents/MacOS/shanjie" install
-    If it says the input mode list is not loaded yet, log out and log back in,
-    then run it again.
+    The first install usually needs a log out and log in before macOS accepts
+    the input method: if the command exits with 3, log out, log back in, and
+    run it again.
   EOS
 end
