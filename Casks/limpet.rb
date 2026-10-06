@@ -1,6 +1,6 @@
 cask "limpet" do
-  version "1.0.0"
-  sha256 "4491a3ad552f20557ea0fa0b64e2b765e9e977ef343a93b24d0c59ce6e351073"
+  version "1.0.1"
+  sha256 "588c3c38f0f2e1f645fd4c5cf157303aca247d1894468e0515ae21bfefbfceaf"
 
   url "https://github.com/Nanako0129/limpet/releases/download/v#{version}/limpet.app.tar.gz"
   name "limpet"
