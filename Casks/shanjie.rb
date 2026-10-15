@@ -1,6 +1,6 @@
 cask "shanjie" do
-  version "0.4.3"
-  sha256 "fb9aaf35d3c8ae906143ab0ce18ed8c01868a1d3ec23cb9ebc4ced2ab2120009"
+  version "0.4.4"
+  sha256 "6ee1c8a353680935b99e134816115b92288cf99ec5c6543d79bedb5dba430206"
 
   url "https://github.com/Nanako0129/shanjie/releases/download/v#{version}/shanjie-#{version}.zip"
   name "善解輸入法"
