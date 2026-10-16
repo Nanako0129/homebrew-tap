@@ -1,6 +1,6 @@
 cask "shanjie" do
-  version "0.4.6"
-  sha256 "fba95f0b94a6687b00194e6eb2e33d787780c517a101950d801a076afe3e5854"
+  version "0.4.7"
+  sha256 "2ad0ae6c9036db8f3707ef8f6fd0b7bd49a1d88088feb0e0f10f3055960d196d"
 
   url "https://github.com/Nanako0129/shanjie/releases/download/v#{version}/shanjie-#{version}.zip"
   name "善解輸入法"
@@ -8,6 +8,11 @@ cask "shanjie" do
   desc "Zhuyin input method that converts whole sentences on the device"
   homepage "https://shanjie.nyanako.com/"
 
+  # The input method updates itself with Sparkle (docs/contracts/about-update.md section 2).
+  # What a plain `brew upgrade` then does with this cask is to be measured (contract section
+  # 3.5); naming it upgrades it (documented for auto_updates):
+  # `brew upgrade --cask nanako0129/tap/shanjie`.
+  auto_updates true
   depends_on arch: :arm64
   depends_on macos: :tahoe
 
