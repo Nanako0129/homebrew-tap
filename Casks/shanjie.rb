@@ -1,6 +1,6 @@
 cask "shanjie" do
-  version "0.4.7"
-  sha256 "2ad0ae6c9036db8f3707ef8f6fd0b7bd49a1d88088feb0e0f10f3055960d196d"
+  version "0.5.0"
+  sha256 "e51a6571ff304ff9ad205575d9586070dc46143694444b20d9d8125967ff9992"
 
   url "https://github.com/Nanako0129/shanjie/releases/download/v#{version}/shanjie-#{version}.zip"
   name "善解輸入法"
@@ -16,6 +16,10 @@ cask "shanjie" do
   depends_on arch: :arm64
   depends_on macos: :tahoe
 
+  # The cask installs for the current account only (~/Library/Input Methods). The installer
+  # app's "This Mac" option puts it in /Library/Input Methods instead
+  # (docs/contracts/system-install.md); with that copy present, a brew install adds a second
+  # one, which is not blocked here.
   input_method "善解輸入法.app"
 
   # Upgrade and reinstall: stop the running old copy only once the new bundle is in place, so the
@@ -33,7 +37,13 @@ cask "shanjie" do
 
   uninstall signal: ["TERM", "com.nyanako.inputmethod.shanjie"]
 
-  zap trash: "~/Library/Preferences/com.nyanako.inputmethod.shanjie.plist"
+  # The learning data and preferences: unsandboxed versions keep them in the first and last paths;
+  # the sandboxed version moves them into its container (docs/contracts/app-sandbox.md section 2.5).
+  zap trash: [
+    "~/Library/Application Support/shanjie",
+    "~/Library/Containers/com.nyanako.inputmethod.shanjie",
+    "~/Library/Preferences/com.nyanako.inputmethod.shanjie.plist",
+  ]
 
   caveats <<~EOS
     After the first install, register and enable the input method:
