@@ -1,6 +1,6 @@
 cask "shanjie" do
-  version "0.6.1"
-  sha256 "37573d3e383193ad2bee16ad2febc903ae17bb169fe07bef4e24fd16b24f212e"
+  version "0.7.0"
+  sha256 "43495df7bd2457d6e8dd0360856640f80f0a43eb7e4ccdb8f2da0e049e47a39a"
 
   url "https://github.com/Nanako0129/shanjie/releases/download/v#{version}/shanjie-#{version}.zip"
   name "善解輸入法"
@@ -8,9 +8,9 @@ cask "shanjie" do
   desc "Zhuyin input method that converts whole sentences on the device"
   homepage "https://shanjie.nyanako.com/"
 
-  # The input method updates itself with Sparkle (docs/contracts/about-update.md section 2).
-  # What a plain `brew upgrade` then does with this cask is to be measured (contract section
-  # 3.5); naming it upgrades it (documented for auto_updates):
+  # The input method updates itself with Sparkle (docs/spec/install-and-update.md §2.2, §3.7, §7.2–§7.4).
+  # What a plain `brew upgrade` then does with this cask is to be measured;
+  # naming it upgrades it (documented for auto_updates):
   # `brew upgrade --cask nanako0129/tap/shanjie`.
   auto_updates true
   depends_on arch: :arm64
@@ -18,14 +18,14 @@ cask "shanjie" do
 
   # The cask installs for the current account only (~/Library/Input Methods). The installer
   # app's "This Mac" option puts it in /Library/Input Methods instead
-  # (docs/contracts/system-install.md); with that copy present, a brew install adds a second
+  # (docs/spec/install-and-update.md); with that copy present, a brew install adds a second
   # one, which is not blocked here.
   input_method "善解輸入法.app"
 
   # Upgrade and reinstall: stop the running old copy only once the new bundle is in place, so the
   # system starts the new one. Homebrew skips `uninstall signal` on upgrade, and `on_upgrade` did
   # not take effect when the installed cask was read back from its receipt (measured 2026-10-08,
-  # Homebrew 7.0.7; docs/contracts/s3b.md section 15). The system starts the input method with no
+  # Homebrew 7.0.7; docs/spec/install-and-update.md). The system starts the input method with no
   # arguments; `[^ ]*` keeps a command that merely names this path as an argument from matching
   # (a home directory containing a space is not matched either). An empty prefix covers a
   # system-wide /Library/Input Methods install.
@@ -38,7 +38,7 @@ cask "shanjie" do
   uninstall signal: ["TERM", "com.nyanako.inputmethod.shanjie"]
 
   # The learning data and preferences: unsandboxed versions keep them in the first and last paths;
-  # the sandboxed version moves them into its container (docs/contracts/app-sandbox.md section 2.5).
+  # the sandboxed version moves them into its container (docs/spec/install-and-update.md §9.2).
   zap trash: [
     "~/Library/Application Support/shanjie",
     "~/Library/Containers/com.nyanako.inputmethod.shanjie",
